@@ -978,7 +978,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316385708}
-  m_LocalRotation: {x: 0, y: 0.99303097, z: 0, w: -0.117853805}
+  m_LocalRotation: {x: 0, y: 0.95747954, z: 0, w: -0.28850135}
   m_LocalPosition: {x: 608.9013, y: 429.82004, z: 617.6387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1680,6 +1680,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1841640370}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &621162385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 0174cbf4daf6cba4eba39aeda2c0ca56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1208106550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &621162387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621162385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb12927953283d47a1cfc6e8850475d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StreamName: PPG
+  StreamType: HRV
+  targetLight: {fileID: 55137824}
+  useX: 1
+  useY: 0
+  useZ: 0
 --- !u!1001 &626265558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6167,6 +6191,83 @@ Transform:
   m_Father: {fileID: 1956619313}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 11.618301, y: -178.22296, z: 0}
+--- !u!1 &1925938655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925938657}
+  - component: {fileID: 1925938656}
+  m_Layer: 0
+  m_Name: Resolver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1925938656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925938655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc033cd2cffec7459d6fa31ad6a961b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knownStreams: []
+  forgetStreamAfter: 1
+  onStreamFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 621162387}
+        m_MethodName: AStreamIsFound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Assets.LSL4Unity.Scripts.StreamEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onStreamLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 621162387}
+        m_MethodName: AStreamGotLost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Assets.LSL4Unity.Scripts.StreamEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!4 &1925938657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925938655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 585.7224, y: 411.10333, z: 729.4551}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1944384552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: fcb6c84586d2edb4d97811ad8303638b,
