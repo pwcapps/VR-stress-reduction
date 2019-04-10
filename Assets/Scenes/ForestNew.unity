@@ -1574,8 +1574,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316385708}
-  m_LocalRotation: {x: 0.055402465, y: 0.8059836, z: 0.07640871, w: -0.5843653}
-  m_LocalPosition: {x: 610.3353, y: 425.6803, z: 617.65845}
+  m_LocalRotation: {x: -0.10771801, y: 0.08461558, z: 0.009200731, w: 0.9905314}
+  m_LocalPosition: {x: 581.8216, y: 423.88812, z: 587.25214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2984,7 +2984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621162385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: beb12927953283d47a1cfc6e8850475d, type: 3}
   m_Name: 
@@ -2995,6 +2995,25 @@ MonoBehaviour:
   useX: 1
   useY: 0
   useZ: 0
+--- !u!114 &621162388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621162385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4e53a66ad48ac4ba755debc348180f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StreamName: PPG
+  StreamType: HRV
+  targetLight: {fileID: 55137824}
+  useX: 1
+  useY: 0
+  useZ: 0
+  rgb: 0
 --- !u!1001 &626265558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11289,7 +11308,7 @@ MonoBehaviour:
   onStreamFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 621162387}
+      - m_Target: {fileID: 621162388}
         m_MethodName: AStreamIsFound
         m_Mode: 0
         m_Arguments:
@@ -11305,7 +11324,7 @@ MonoBehaviour:
   onStreamLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 621162387}
+      - m_Target: {fileID: 621162388}
         m_MethodName: AStreamGotLost
         m_Mode: 0
         m_Arguments:

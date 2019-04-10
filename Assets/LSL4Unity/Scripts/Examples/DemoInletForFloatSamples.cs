@@ -24,7 +24,7 @@ namespace Assets.LSL4Unity.Scripts.Examples
 
         private bool pullSamplesContinuously = false;
 
-		private readonly float maxHRV = 20f;
+		private readonly float maxHRV = 200f;
 		private readonly float minHRV = 0f;
 		private float HRVRange;
 

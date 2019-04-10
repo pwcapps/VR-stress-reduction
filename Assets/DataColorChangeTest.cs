@@ -16,14 +16,35 @@ namespace Assets.LSL4Unity.Scripts.Examples
     /// </summary>
     public class DataColorChangeTest : InletFloatSamples
     {
-        public Transform targetTransform;
+        public enum RGB
+        {
+            r, g, b
+        }
+
+        public Light targetLight;
 
         public bool useX;
         public bool useY;
         public bool useZ;
 
+        public RGB rgb = RGB.r;
+
         private bool pullSamplesContinuously = false;
 
+        private readonly float maxHRV = 200f;
+        private readonly float minHRV = 0f;
+        private float HRVRange;
+
+        private readonly float maxIntensity = 1f;
+        private readonly float minIntensity = 0.1f;
+        private readonly float unitIntensity = 0.05f;    // How much to increase or decrease color intensity with each update
+        private float intensityRange;
+
+        private float currIntensity = -1f;
+        private float aim;
+
+        private readonly float secPerUpdate = 0.01f;
+        private float prevUpdate;
 
         void Start()
         {
@@ -31,6 +52,9 @@ namespace Assets.LSL4Unity.Scripts.Examples
             // got instantiated during runtime
 
             // registerAndLookUpStream();
+            prevUpdate = Time.timeSinceLevelLoad;
+            HRVRange = maxHRV - minHRV;
+            intensityRange = maxIntensity - minIntensity;
         }
 
         protected override bool isTheExpected(LSLStreamInfoWrapper stream)
@@ -57,11 +81,61 @@ namespace Assets.LSL4Unity.Scripts.Examples
             float y = useY ? newSample[1] : 1;
             float z = useZ ? newSample[2] : 1;
 
-            // we map the data to the scale factors
-            var targetScale = new Vector3(x, y, z);
+            /* Model for changing light intensity */
+            float scaledHRV = x / HRVRange;
 
-            // apply the rotation to the target transform
-            targetTransform.localScale = targetScale;
+            // Shift x within range of minHRV and maxHRV
+            if (x < minHRV)
+            {
+                x = minHRV;
+            }
+            else if (x > maxHRV)
+            {
+                x = maxHRV;
+            }
+
+            // First update
+            if (currIntensity < 0.0f)
+            {
+                currIntensity = intensityRange * (1 - scaledHRV) + minIntensity;
+                aim = currIntensity;
+            }
+
+            // Update every few seconds
+            if (Time.timeSinceLevelLoad - prevUpdate < secPerUpdate) return;
+            prevUpdate = Time.timeSinceLevelLoad;
+
+            // Update currIntensity relative to aim
+            if (aim > currIntensity)
+            {
+                currIntensity += unitIntensity;
+            }
+            else
+            {
+                currIntensity -= unitIntensity;
+            }
+
+            // Update aim
+            aim = intensityRange * (1 - scaledHRV) + minIntensity;
+
+            // Update light intensity
+            switch (rgb)
+            {
+                case RGB.r:
+                    targetLight.color = new Color(currIntensity, targetLight.color.g, targetLight.color.b);
+                    break;
+                case RGB.g:
+                    targetLight.color = new Color(targetLight.color.r, currIntensity, targetLight.color.b);
+                    break;
+                case RGB.b:
+                    targetLight.color = new Color(targetLight.color.r, targetLight.color.g, currIntensity);
+                    break;
+                default:
+                    break;
+            }
+
+            Debug.Log("HRV: " + x);
+            Debug.Log("current intensity: " + currIntensity);
         }
 
         protected override void OnStreamAvailable()
