@@ -32,4 +32,9 @@ git clone https://github.com/pwcapps/VR-stress-reduction.git
 
 - At the same time in Unity, go to Assets/Scenes/ForestNew to open and run the forest scene
 
-Done! In the Unity editor, you should be able to look around the scene by dragging your mouse and observe color changes in the scene's ambient lighting. Be sure to turn up the audio as well to hear the forest sounds.
+Done! In the Unity editor, you should be able to look around the scene by dragging your mouse and observe color changes in the scene's ambient lighting. Be sure to turn up the audio to hear the forest sounds.
+
+
+### Submodules
+
+- HRV Simulator from https://github.com/PokerBox/HRV-Simulator
