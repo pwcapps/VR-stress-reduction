@@ -106,11 +106,11 @@ namespace Assets.LSL4Unity.Scripts.Examples
             prevUpdate = Time.timeSinceLevelLoad;
 
             // Update currIntensity relative to aim
-            if (aim > currIntensity)
+            if (aim > currIntensity && currIntensity < maxIntensity)
             {
                 currIntensity += unitIntensity;
             }
-            else
+			else if (aim <= currIntensity && currIntensity > minIntensity)
             {
                 currIntensity -= unitIntensity;
             }
