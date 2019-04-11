@@ -152,6 +152,19 @@ namespace Assets.LSL4Unity.Scripts.Examples
         {
             if (pullSamplesContinuously)
                 pullSamples();
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                rgb = RGB.r;
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                rgb = RGB.g;
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                rgb = RGB.b;
+            }
         }
     }
 
