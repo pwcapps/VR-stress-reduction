@@ -36,14 +36,14 @@ namespace Assets.LSL4Unity.Scripts.Examples
         private float HRVRange;
 
         private readonly float maxIntensity = 1f;
-        private readonly float minIntensity = 0.1f;
+        private readonly float minIntensity = 0;
         private readonly float unitIntensity = 0.05f;    // How much to increase or decrease color intensity with each update
         private float intensityRange;
 
         private float currIntensity = -1f;
         private float aim;
 
-        private readonly float secPerUpdate = 0.01f;
+        private readonly float secPerUpdate = 0.5f;
         private float prevUpdate;
 
         void Start()
@@ -81,9 +81,6 @@ namespace Assets.LSL4Unity.Scripts.Examples
             float y = useY ? newSample[1] : 1;
             float z = useZ ? newSample[2] : 1;
 
-            /* Model for changing light intensity */
-            float scaledHRV = x / HRVRange;
-
             // Shift x within range of minHRV and maxHRV
             if (x < minHRV)
             {
@@ -94,6 +91,9 @@ namespace Assets.LSL4Unity.Scripts.Examples
                 x = maxHRV;
             }
 
+            /* Model for changing light intensity */
+            float scaledHRV = x / HRVRange;
+
             // First update
             if (currIntensity < 0.0f)
             {
@@ -102,8 +102,8 @@ namespace Assets.LSL4Unity.Scripts.Examples
             }
 
             // Update every few seconds
-            if (Time.timeSinceLevelLoad - prevUpdate < secPerUpdate) return;
-            prevUpdate = Time.timeSinceLevelLoad;
+            if (Time.time - prevUpdate < secPerUpdate) return;
+            prevUpdate = Time.time;
 
             // Update currIntensity relative to aim
             if (aim > currIntensity && currIntensity < maxIntensity)
