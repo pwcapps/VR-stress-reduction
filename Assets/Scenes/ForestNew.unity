@@ -2326,7 +2326,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1208106550}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &621162387
+--- !u!114 &621162386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2335,13 +2335,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 621162385}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb12927953283d47a1cfc6e8850475d, type: 3}
+  m_Script: {fileID: 11500000, guid: 149b9cfbd3222294d841c96f61b893cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreamName: PPG
-  StreamType: HRV
-  targetLight: {fileID: 55137824}
-  useX: 1
+  StreamName: 
+  StreamType: 
+  targetLight: {fileID: 0}
+  useX: 0
   useY: 0
   useZ: 0
 --- !u!114 &621162388
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   useX: 1
   useY: 0
   useZ: 0
-  rgb: 2
+  rgb: 0
 --- !u!1001 &626265558
 PrefabInstance:
   m_ObjectHideFlags: 0
