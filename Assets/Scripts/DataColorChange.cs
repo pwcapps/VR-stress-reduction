@@ -14,7 +14,7 @@ namespace Assets.LSL4Unity.Scripts.Examples
     /// and how they should processed in your game logic
     ///
     /// </summary>
-    public class DataColorChangeTest : InletFloatSamples
+    public class DataColorChange : InletFloatSamples
     {
         public enum RGB
         {
