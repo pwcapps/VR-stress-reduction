@@ -20,6 +20,7 @@ namespace Assets.LSL4Unity.Scripts.Examples
         {
             r, g, b
         }
+		public RGB rgb = RGB.r;
 
         public Light targetLight;
 
@@ -27,7 +28,29 @@ namespace Assets.LSL4Unity.Scripts.Examples
         public bool useY;
         public bool useZ;
 
-        public RGB rgb = RGB.r;
+		[Range(0.0f, 1.0f)]
+		public float rNormal;
+		[Range(0.0f, 1.0f)]
+		public float gNormal;
+		[Range(0.0f, 1.0f)]
+		public float bNormal;
+		[Range(0.0f, 1.0f)]
+		public float rStress;
+		[Range(0.0f, 1.0f)]
+		public float gStress;
+		[Range(0.0f, 1.0f)]
+		public float bStress;
+
+		[Range(0.0f, 1.0f)]
+		public float a;
+
+		private float rRange;
+		private float bRange;
+		private float gRange;
+
+		private float currR = -1f;
+		private float currB = -1f;
+		private float currG = -1f;
 
         private bool pullSamplesContinuously = false;
 
@@ -37,7 +60,7 @@ namespace Assets.LSL4Unity.Scripts.Examples
 
         private readonly float maxIntensity = 1f;
         private readonly float minIntensity = 0;
-        private readonly float unitIntensity = 0.05f;    // How much to increase or decrease color intensity with each update
+        private readonly float unitIntensity = 0.1f;    // How much to increase or decrease color intensity with each update
         private float intensityRange;
 
         private float currIntensity = -1f;
@@ -55,6 +78,10 @@ namespace Assets.LSL4Unity.Scripts.Examples
             prevUpdate = Time.timeSinceLevelLoad;
             HRVRange = maxHRV - minHRV;
             intensityRange = maxIntensity - minIntensity;
+
+			rRange = rStress - rNormal;
+			gRange = gStress - gNormal;
+			bRange = bStress - bNormal;
         }
 
         protected override bool isTheExpected(LSLStreamInfoWrapper stream)
@@ -95,10 +122,15 @@ namespace Assets.LSL4Unity.Scripts.Examples
             float scaledHRV = x / HRVRange;
 
             // First update
-            if (currIntensity < 0.0f)
+            if (currR < 0.0f)
             {
-                currIntensity = intensityRange * (1 - scaledHRV) + minIntensity;
-                aim = currIntensity;
+                //currIntensity = intensityRange * (1 - scaledHRV) + minIntensity;
+                //aim = currIntensity;
+
+				currR = rRange * (1 - scaledHRV) + rNormal;
+				currG = gRange * (1 - scaledHRV) + gNormal;
+				currB = bRange * (1 - scaledHRV) + bNormal;
+				aim = currB;
             }
 
             // Update every few seconds
@@ -106,36 +138,53 @@ namespace Assets.LSL4Unity.Scripts.Examples
             prevUpdate = Time.time;
 
             // Update currIntensity relative to aim
-            if (aim > currIntensity && currIntensity < maxIntensity)
+            /*if (aim > currIntensity && currIntensity < maxIntensity)
             {
                 currIntensity += unitIntensity;
             }
 			else if (aim <= currIntensity && currIntensity > minIntensity)
             {
                 currIntensity -= unitIntensity;
-            }
+            }*/
+
+			if (aim > currB && currB < bStress)
+			{
+				currR += unitIntensity * (rRange/intensityRange);
+				currG += unitIntensity * (gRange/intensityRange);
+				currB += unitIntensity * (bRange/intensityRange);
+			}
+			else if (aim <= currB && currB > bNormal)
+			{
+				currR -= unitIntensity * (rRange/intensityRange);
+				currG -= unitIntensity * (gRange/intensityRange);
+				currB -= unitIntensity * (bRange/intensityRange);
+			}
 
             // Update aim
-            aim = intensityRange * (1 - scaledHRV) + minIntensity;
-
+            //aim = intensityRange * (1 - scaledHRV) + minIntensity;
+			aim = bRange * (1 - scaledHRV) + bNormal;
             // Update light intensity
-            switch (rgb)
+            /*switch (rgb)
             {
                 case RGB.r:
-                    targetLight.color = new Color(currIntensity, targetLight.color.g, targetLight.color.b);
+                    targetLight.color = new Color(currIntensity, targetLight.color.g, targetLight.color.b, 0.6f);
                     break;
                 case RGB.g:
-                    targetLight.color = new Color(targetLight.color.r, currIntensity, targetLight.color.b);
+				targetLight.color = new Color(targetLight.color.r, currIntensity, targetLight.color.b, 0.6f);
                     break;
                 case RGB.b:
-                    targetLight.color = new Color(targetLight.color.r, targetLight.color.g, currIntensity);
+				targetLight.color = new Color(targetLight.color.r, targetLight.color.g, currIntensity, 0.6f);
                     break;
                 default:
                     break;
-            }
+            }*/
+			targetLight.color = new Color(currR, currG, currB, a);
 
             Debug.Log("HRV: " + x);
-            Debug.Log("current intensity: " + currIntensity);
+			//Debug.Log("RGB: " + currR + " " + currG + " " + currB);
+			//Debug.Log("aim: " + aim);
+
+            //Debug.Log("current intensity: " + currIntensity);
         }
 
         protected override void OnStreamAvailable()
@@ -153,7 +202,7 @@ namespace Assets.LSL4Unity.Scripts.Examples
             if (pullSamplesContinuously)
                 pullSamples();
 
-            if (Input.GetKeyDown(KeyCode.R))
+           /* if (Input.GetKeyDown(KeyCode.R))
             {
                 rgb = RGB.r;
             }
@@ -164,7 +213,11 @@ namespace Assets.LSL4Unity.Scripts.Examples
             if (Input.GetKeyDown(KeyCode.B))
             {
                 rgb = RGB.b;
-            }
+            }*/
+
+			rRange = rStress - rNormal;
+			gRange = gStress - gNormal;
+			bRange = bStress - bNormal;
         }
     }
 
