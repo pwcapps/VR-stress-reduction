@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.5394797, g: 0.5394797, b: 0.5394797, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 3.58
+  m_AmbientIntensity: 5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: da976b1a4f7ebb949b0f71341e4f1821, type: 2}
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 0
+    m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -1317,8 +1317,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316385708}
-  m_LocalRotation: {x: 0.03843814, y: 0.88417566, z: 0.07393025, w: -0.45966318}
-  m_LocalPosition: {x: 605.99927, y: 428.05896, z: 615.35803}
+  m_LocalRotation: {x: 0.022015056, y: 0.97082996, z: 0.09821389, w: -0.21762015}
+  m_LocalPosition: {x: 599.42725, y: 423.0177, z: 609.77423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3858,6 +3858,7 @@ GameObject:
   - component: {fileID: 941645640}
   - component: {fileID: 941645639}
   - component: {fileID: 941645638}
+  - component: {fileID: 941645642}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3960,6 +3961,19 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941645635}
   m_Enabled: 1
+--- !u!114 &941645642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941645635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 35b3c16a9d5e7ac4d8c32e72f1fdbecb, type: 2}
 --- !u!4 &961501346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 266196e9ada25dc419176491944c345b,
@@ -5091,7 +5105,7 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 10800000, guid: 0174cbf4daf6cba4eba39aeda2c0ca56, type: 3}
       propertyPath: m_Intensity
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: 0174cbf4daf6cba4eba39aeda2c0ca56, type: 3}
       propertyPath: m_Color.r
@@ -9844,9 +9858,9 @@ Terrain:
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 3dcfedb4a4c433e47ac0690bbd034236, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
+  m_TreeBillboardDistance: 150
   m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
+  m_TreeMaximumFullLODCount: 75
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
@@ -9981,7 +9995,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015781100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 602, y: 440, z: 610}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9989,7 +10003,7 @@ Transform:
   - {fileID: 981021040}
   m_Father: {fileID: 1097135749}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &2021593162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 1914893b4b4f8a44f9fa76469e678d44,

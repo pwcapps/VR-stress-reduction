@@ -240,7 +240,6 @@ PlayerSettings:
   tvOSManualSigningProvisioningProfileType: 0
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
-  iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
   clonedFromGUID: 3355557de5a687e44a6eface0a816616
   templatePackageId: 
@@ -680,7 +679,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 716388cc-f937-4319-8e1f-6040f83ceb58
   framebufferDepthMemorylessMode: 0
-  projectName: 
+  projectName: New Unity Project (1)
   organizationId: frogshaman
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
